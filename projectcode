@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeFull</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimony {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HopeFull</h1>
+    </header>
+
+    <main>
+        <div id="testimonies-container"></div>
+
+        <form id="testimony-form">
+            <label for="category">Category:</label>
+            <select id="category" name="category">
+                <option value="fruitfulness">Fruitfulness</option>
+                <option value="marriages">Marriages</option>
+                <option value="healing">Healing</option>
+                <option value="finance">Finance</option>
+                <option value="breakthrough">Breakthrough</option>
+            </select>
+
+            <label for="message">Testimony:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="button" onclick="submitTestimony()">Submit Testimony</button>
+        </form>
+    </main>
+
+    <script>
+        function submitTestimony() {
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value;
+
+            if (!category || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const testimoniesContainer = document.getElementById('testimonies-container');
+            const testimonyDiv = document.createElement('div');
+            testimonyDiv.classList.add('testimony');
+            testimonyDiv.innerHTML = `<strong>${category}</strong>: ${message}`;
+            testimoniesContainer.appendChild(testimonyDiv);
+
+            // Clear form fields
+            document.getElementById('category').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+
+</html>
